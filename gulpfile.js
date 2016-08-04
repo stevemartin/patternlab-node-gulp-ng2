@@ -32,6 +32,10 @@ gulp.task('pl-systemjs', function(){
         },
         packages: {
             '@angular/core' : { main: 'index.js' },
+            '@angular/common' : { main: 'index.js' },
+            '@angular/compiler' : { main: 'index.js' },
+            '@angular/platform-browser' : { main: 'index.js' },
+            '@angular/platform-browser-dynamic' : { main: 'index.js' },
             'rxjs': { defaultExtension: 'js' }
         }
     })
@@ -113,6 +117,8 @@ function build(done) {
 }
 
 gulp.task('pl-assets', gulp.series(
+  'pl-typescript',
+  'pl-systemjs',
   gulp.parallel(
     'pl-copy:js',
     'pl-copy:img',
@@ -174,6 +180,7 @@ function reload() {
 }
 
 function watch() {
+  gulp.watch(path.resolve(paths().source.ts, '**/*.ts')).on('change', gulp.series('pl-typescript', 'pl-systemjs','pl-copy:js', reload));
   gulp.watch(path.resolve(paths().source.css, '**/*.css')).on('change', gulp.series('pl-copy:css', reload));
   gulp.watch(path.resolve(paths().source.styleguide, '**/*.*')).on('change', gulp.series('pl-copy:styleguide', 'pl-copy:styleguide-css', reload));
 

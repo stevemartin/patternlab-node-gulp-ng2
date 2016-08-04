@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
+var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 var Circle = (function () {
     function Circle() {
         this.cx = 30;
@@ -24,3 +25,4 @@ var Circle = (function () {
     return Circle;
 }());
 exports.Circle = Circle;
+platform_browser_dynamic_1.bootstrap(Circle);

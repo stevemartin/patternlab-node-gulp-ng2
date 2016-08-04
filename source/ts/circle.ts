@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 
 @Component({
     selector: '[circle]',
@@ -13,3 +14,5 @@ export class Circle {
   stroke:string = 'black';
   fill:string = 'darkred';
 }
+
+bootstrap(Circle)
