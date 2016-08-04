@@ -1,0 +1,9 @@
+{
+  "name": "edition-node-gulp",
+  "dependencies": {
+    "es6-promise": "registry:npm/es6-promise#3.0.0+20160723033700"
+  },
+  "globalDependencies": {
+    "core-js": "registry:dt/core-js#0.0.0+20160602141332"
+  }
+}

@@ -9,6 +9,7 @@
       "styleguide" : "./node_modules/styleguidekit-assets-default/dist/",
       "patternlabFiles" : "./node_modules/styleguidekit-mustache-default/views/",
       "js" : "./source/js",
+      "ts" : "./source/ts",
       "images" : "./source/images",
       "fonts" : "./source/fonts",
       "css" : "./source/css/"

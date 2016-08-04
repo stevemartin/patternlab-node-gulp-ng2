@@ -5,8 +5,19 @@
 ******************************************************/
 var gulp = require('gulp'),
   path = require('path'),
+  ts = require('gulp-typescript'),
+  tsProject = ts.createProject("tsconfig.json"),
   browserSync = require('browser-sync').create(),
   argv = require('minimist')(process.argv.slice(2));
+
+/******************************************************
+ * TRANSPILE TYPESCRIPT - stream assets from source to destination
+******************************************************/
+gulp.task('pl-typescript', function(){
+  return tsProject.src('**/*.ts', path.resolve(paths().source.ts))
+    .pipe(ts(tsProject))
+    .js.pipe(gulp.dest(path.resolve(paths().source.js)))
+})
 
 /******************************************************
  * COPY TASKS - stream assets from source to destination
