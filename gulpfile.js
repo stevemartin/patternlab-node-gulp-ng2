@@ -8,6 +8,7 @@ var gulp = require('gulp'),
   ts = require('gulp-typescript'),
   tsProject = ts.createProject("tsconfig.json"),
   browserSync = require('browser-sync').create(),
+  Builder = require('systemjs-builder'),
   argv = require('minimist')(process.argv.slice(2));
 
 /******************************************************
@@ -17,6 +18,27 @@ gulp.task('pl-typescript', function(){
   return tsProject.src('**/*.ts', path.resolve(paths().source.ts))
     .pipe(ts(tsProject))
     .js.pipe(gulp.dest(path.resolve(paths().source.js)))
+})
+
+/******************************************************
+ * BUILD JAVASCRIPT - resolve modules and bundle as static
+******************************************************/
+gulp.task('pl-systemjs', function(){
+    var builder = new Builder;
+    builder.config({
+        map: {
+            '@angular': 'node_modules/@angular',
+            'rxjs': 'node_modules/rxjs'
+        },
+        packages: {
+            '@angular/core' : { main: 'index.js' },
+            'rxjs': { defaultExtension: 'js' }
+        }
+    })
+
+    return builder.buildStatic('source/js/circle.js', 'source/js/circle.sfx.js', {
+        globalName: 'plCircle'
+    })
 })
 
 /******************************************************
