@@ -28,7 +28,8 @@ gulp.task('pl-systemjs', function(){
     builder.config({
         map: {
             '@angular': 'node_modules/@angular',
-            'rxjs': 'node_modules/rxjs'
+            'rxjs': 'node_modules/rxjs',
+            'main': 'source/js'
         },
         packages: {
             '@angular/core' : { main: 'index.js' },
@@ -36,12 +37,16 @@ gulp.task('pl-systemjs', function(){
             '@angular/compiler' : { main: 'index.js' },
             '@angular/platform-browser' : { main: 'index.js' },
             '@angular/platform-browser-dynamic' : { main: 'index.js' },
-            'rxjs': { defaultExtension: 'js' }
+            'rxjs': { defaultExtension: 'js' },
+            'main': 'source/js/main.js'
         }
     })
 
-    return builder.buildStatic('source/js/circle.js', 'source/js/circle.sfx.js', {
+    builder.buildStatic('source/js/circle-app.js', 'source/js/circle-app.sfx.js', {
         globalName: 'plCircle'
+    })
+    return builder.buildStatic('source/js/rectangle-app.js', 'source/js/rectangle-app.sfx.js', {
+        globalName: 'plRectangle'
     })
 })
 

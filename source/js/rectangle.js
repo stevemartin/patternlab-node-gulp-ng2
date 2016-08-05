@@ -6,21 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
-var Circle = (function () {
-    function Circle() {
-        this.cx = 30;
-        this.cy = 30;
-        this.r = 29;
+var Rectangle = (function () {
+    function Rectangle() {
+        this.width = 20;
+        this.height = 50;
         this.opacity = 1.0;
         this.stroke = 'black';
-        this.fill = 'darkred';
+        this.fill = 'white';
     }
-    Circle = __decorate([
+    Rectangle = __decorate([
         core_1.Component({
-            selector: '[circle]',
-            template: "<svg:circle [attr.fill]=\"fill\" [attr.cx]=\"cx\" [attr.cy]=\"cy\" [attr.r]=\"r\" [attr.stroke]=\"stroke\" [attr.opacity]=\"opacity\" />"
+            selector: '[rect]',
+            template: "<svg:rect [attr.fill]=\"fill\" [attr.width]=\"width\" [attr.height]=\"height\" [attr.stroke]=\"stroke\" [attr.opacity]=\"opacity\" />"
         })
-    ], Circle);
-    return Circle;
+    ], Rectangle);
+    return Rectangle;
 }());
-exports.Circle = Circle;
+exports.Rectangle = Rectangle;
